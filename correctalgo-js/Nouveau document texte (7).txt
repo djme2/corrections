@@ -1,0 +1,14 @@
+Correction de l'exercice 4 sur l'Algo
+[15:42]
+/// Exercice 4 
+
+nb = prompt ("Entrer un nombre");
+
+while(nb < 10 || nb > 20 ){
+    if(nb <10 ){
+        alert("Plus grand")
+    }else{
+    alert("Plus petit")
+    }
+    nb = prompt ("Entrer un nombre");
+    }

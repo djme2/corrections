@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body onload="a = setInterval('alterner()',2000)">
+    <div class="mx-5 mt-4 fs-5">
+        <img id="tof" class="img-fluid w-25" src="images/aigle.jpg" alt="oups">
+        <input type="button" value="Stop" onclick="clearInterval(a)">
+        <input type="button" value="Reprendre" onclick="a = setInterval('alterner()',2000)">
+        
+        <img id="diapo" class="img-fluid w-25" src="images/perroquet.jpg" alt="oups">
+        <input type="button" value="Précédent" onclick="precedent()">
+        <input type="button" value="Suivant" onclick="suivant()">
+    </div>
+    <script src="js/tpJSExo5.js"></script>
+</body>
+</html>

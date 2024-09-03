@@ -1,0 +1,65 @@
+body {
+	background-image: url("images/fond.jpg");
+	background-repeat: repeat;
+	background-color:grey;
+	font-family: "sans-serif";
+	padding: 20px;
+	margin-left: 1cm;
+	margin-right: 1cm;
+	width: 80%;
+	border: 2px solid black;
+}
+h1 {
+	font-size: 36pt;
+	text-align: center;
+	color: #191970;
+	letter-spacing: 6px;
+	text-transform: capitalize;
+}
+h2 {
+	font-size: 24pt;
+	color: #B0C4DE;
+	letter-spacing: 2px;	
+	text-transform: capitalize; 
+	border-bottom: 1px solid #DCDCDC;
+	margin-left: -20px;
+}
+h1::first-letter, h2::first-letter{
+    text-transform: capitalize;
+}
+p {
+	text-align: justify;
+	text-indent: 15px;
+}
+p::first-letter {       font-size: 150%;
+                        font-style: italic;
+                        font-weight: bold;
+                        }
+head::title {
+	border: 5px groove #F0F8F8;
+}
+a:link {color: #612345;}
+a:hover {color: blue; font-weight: bold; text-decoration: underline; }
+a:active, a:focus {text-decoration: none;}
+li {
+	font-size: 20pt;
+	color: #456123;
+	list-style-type: upper-roman;
+	display : block;
+}
+li a:hover {font-weight: bold;} 
+li a:active, li a:focus {text-decoration: line-through;}
+li a:visited {text-decoration: line-through;}
+table {
+	border: 2px dotted white;
+	margin: auto;
+}
+td, th {
+		text-align: center;
+}
+thead {
+	letter-spacing: 3px;
+}
+acronym {
+    color: blue;
+}

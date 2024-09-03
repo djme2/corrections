@@ -1,0 +1,144 @@
+// exercice 1
+
+// let name = prompt( "Quel est ton prénom ?" );
+// document.write("<h1> Bienvenu " + name + "</h1>");
+
+// exercice 2
+
+// let x = parseInt (prompt("Saisissez un nombre : "));
+// let y = parseInt (prompt("Saisissez un autre nombre : "));
+// document.write("<h1>" + x + " + " + y + " = " + (x+y) + "</h1>");
+
+// exercice 3
+
+let x = parseFloat(prompt("Saisir prix de fabrication :"));
+let y = parseFloat(prompt("Saisir prix de vente : "));
+
+if (x > y) {
+    document.write("<h1>Perte de " + (x - y) + " euros</h1>");
+} else if (y > x) {
+    document.write("<h1>Profit de " + (y - x) + " euros</h1>");
+} else {
+    document.write("<h1>Ni perte ni profit</h1>");
+}
+
+
+// // exercice 4
+
+let a = parseInt(prompt("Entrer un entier"));
+let b = parseInt(prompt("Entrer un entier"));
+let c = parseInt(prompt("Entrer un entier"));
+let max = a;
+
+if(b > max){
+    max = b;
+}
+if(c > max){
+    max = c;
+}
+
+document.write(a +";"+ b +";" +c +" le max est "+ max)
+
+
+/ EXERCICE 5
+let t=[];
+for (let i = 0; i < 10; i++) {
+    t[i]= Math.floor(Math.random()*20);
+}
+for (let i = 0; i < 10; i++) {
+    document.write("<h1>" + t[i] + " </h1>") ;
+}
+document.write("<h1>")
+for (let i = 0; i < t.length; i++) {
+let x = t[i];
+if((x <= 4)){
+    document.write(" 0-4 --> Catastrophique, il faut tout revoir<br>")
+}else{
+if((x <= 10)){
+    document.write(" 5-10 --> Insuffisant<br>")
+}else{
+if((x <= 14)){
+    document.write(" 11-14 --> Peut mieux faire<br>")
+}else{
+if((x <= 17)){
+    document.write(" 15-17 --> Bien<br>")
+}else{
+if((x <= 20)){
+    document.write(" 18-20 --> Excellent, Bon travail<br>")
+}else{
+    if((x < 0) || (x > 20)){
+        document.write("Saisir une note entre 0 et 20<br>")
+    }
+}
+}
+}
+}
+}
+}
+document.write("</h1>")
+
+
+
+
+// Exo 8
+
+let n = parseInt(prompt("Entrez un nombre :"));
+let etoiles = '';
+
+if (!isNaN(n) && n > 0) {
+    for (let i = 1; i <= n; i++) {
+         etoiles = '';
+        for (let j = 0; j < i; j++) {
+            etoiles += ''; // etoiles = etoiles + "";
+        }
+        document.write(etoiles);
+        document.write("<br/>");
+    }
+} else {
+    alert("Entrer un nombre valide");
+}
+
+
+
+Deuxième solution
+let n = parseInt(prompt("donner un entier"));
+for (let i = 1; i <= n; i++) {
+    for (let j = 0; j < i; j++) {
+        document.write("*");
+    }
+    document.write("<br>");
+}
+
+
+Exo 9
+[16:11]
+let n = parseInt(prompt("donner un entier"));
+for (let i = 1; i <= n; i++) {
+    for (let j = 0; j < i; j++) {
+        document.write("");
+    }
+    document.write("<br>");
+}
+for (let i = (n-1); i >= 1; i--) {
+    for (let j = 0; j < i; j++) {
+        document.write("");
+    }
+    document.write("<br>");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

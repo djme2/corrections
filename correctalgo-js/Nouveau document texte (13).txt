@@ -1,0 +1,14 @@
+// Diaporama
+let t = ["perroquet.jpg","lapin.jpg","elephant.jpg","loup.jpg","panda.jpg"];
+let j = 0;
+let y = document.getElementById('diapo');
+function suivant() {
+    j++;
+    if(j == t.length){
+        j = 0;
+    }
+    y.src = "images/" + t[j]; // y.setAttribute("src","images/"+t[j]);
+}
+function precedent(){
+
+}

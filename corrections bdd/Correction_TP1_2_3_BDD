@@ -1,0 +1,183 @@
+/*TP1 -- Exercie 1*/
+1°/ SELECT nom FROM auteur;
+2°/ SELECT nom FROM auteur WHERE prenom LIKE 'Albert';
+3°/ SELECT titre FROM livre ORDER BY titre ASC;
+4°/ SELECT numLivre FROM livre WHERE titre LIKE '%d%';
+5°/ SELECT titre FROM livre WHERE anneeImpression = 2003 OR anneeImpression = 1976;
+6°/ SELECT numLivre FROM livre WHERE anneeImpression BETWEEN 2003 AND 2004;
+    SELECT numLivre FROM livre WHERE anneeImpression >= 2003 AND anneeImpression <= 2004;
+7°/ SELECT titre FROM livre WHERE anneeImpression = 2003 AND nombrePages > 500;
+8°/ SELECT titre FROM livre WHERE anneeImpression = 2003 AND nombrePages > 500 AND titre NOT LIKE 'l%';
+/*TP1 -- Exercie 2*/
+1°/ SELECT COUNT(numE) FROM editeur;
+2°/ SELECT MAX(nombrePages), MIN(nombrePages) FROM livre;
+3°/ SELECT COUNT(numLivre) FROM ecrit WHERE numAut = 2;
+4°/ SELECT AVG(nombrePages) FROM livre;
+5°/ SELECT COUNT(DISTINCT(anneeImpression)) FROM livre;
+/*TP1 -- Exercie 3*/
+1°/ SELECT numLivre FROM edite WHERE numE = 0;
+2°/ SELECT numAut FROM livre, ecrit WHERE titre LIKE 'Mangeclous' AND livre.numLivre = ecrit.numLivre;
+3°/ SELECT numLivre FROM ecrit WHERE numAut = 2;
+4°/ SELECT titre FROM livre, ecrit WHERE numAut = 2 AND livre.numLivre = ecrit.numLivre;
+5°/ SELECT livre.numLivre 
+FROM livre, ecrit, edite
+WHERE numE = 0
+AND numAut <> 2
+AND livre.numLivre = ecrit.numLivre
+AND livre.numLivre = edite.numLivre;
+6°/ SELECT ville 
+FROM livre, editeur, edite
+WHERE nombrePages > 500
+AND edite.numLivre = livre.numLivre
+AND edite.numE = editeur.numE;
+/*TP2 -- Exercie 1*/
+1°/ SELECT anneeImpression, COUNT(numLivre)
+FROM livre
+GROUP BY anneeImpression;
+2°/ SELECT anneeImpression, MIN(nombrePages), MAX(nombrePages)
+FROM livre
+GROUP BY anneeImpression;
+3°/ SELECT anneeImpression, AVG(nombrePages)
+FROM livre
+WHERE anneeImpression > 2000
+GROUP BY anneeImpression
+4°/ SELECT numAut,COUNT(numLivre)
+FROM ecrit
+GROUP BY numAut;
+5°/ SELECT ville, COUNT(numE)
+FROM editeur
+GROUP BY ville;
+6°/ SELECT numE, COUNT(numLivre)
+FROM edite
+GROUP BY numE;
+/*TP2 -- Exercie 2*/
+1°/ SELECT anneeImpression, COUNT(ecrit.numLivre)
+FROM livre, ecrit
+WHERE ecrit.numAut = 2
+AND livre.numLivre = ecrit.numLivre
+GROUP BY anneeImpression;
+2°/ SELECT anneeImpression, COUNT(ecrit.numLivre)
+FROM livre, ecrit, auteur
+WHERE auteur.nom LIKE 'Himes'
+AND ecrit.numAut = auteur.numAut
+AND livre.numLivre = ecrit.numLivre
+GROUP BY anneeImpression
+3°/ SELECT anneeImpression, COUNT(ecrit.numLivre)
+FROM livre, ecrit, auteur
+WHERE auteur.nom LIKE 'Himes'
+AND ecrit.numAut = auteur.numAut
+AND livre.numLivre = ecrit.numLivre
+GROUP BY anneeImpression
+HAVING anneeImpression > 2000;
+4°/ SELECT ville, COUNT(numLivre)
+FROM editeur, edite
+WHERE editeur.numE = edite.numE
+GROUP BY ville;
+/*TP2 -- Exercie 3*/
+/****** SANS OPERATEURS ENSEMBLISTE **********/
+1°/ SELECT numLivre 
+FROM livre
+WHERE nombrePages > 300
+AND anneeImpression < 2003;
+2°/ SELECT numLivre 
+FROM livre
+WHERE nombrePages > 300
+OR anneeImpression < 2003;
+3°/ SELECT numLivre 
+FROM livre
+WHERE nombrePages > 300
+AND anneeImpression >= 2003;
+/****** AVEC OPERATEURS ENSEMBLISTE **********/
+1°/ 
+** Version 1
+SELECT numLivre 
+FROM livre l1
+WHERE nombrePages > 300
+and EXISTS(
+SELECT numLivre 
+FROM livre l2
+WHERE anneeImpression < 2003
+AND l1.numLivre = l2.numLivre);
+** Version 2
+SELECT numLivre 
+FROM livre l1
+WHERE nombrePages > 300
+INTERSECT
+(SELECT numLivre 
+FROM livre l2
+WHERE anneeImpression < 2003
+AND l1.numLivre = l2.numLivre);
+2°/ SELECT numLivre 
+FROM livre
+WHERE nombrePages > 300
+UNION
+SELECT numLivre 
+FROM livre
+WHERE anneeImpression < 2003;
+3°/ SELECT numLivre 
+FROM livre l1
+WHERE nombrePages > 300
+AND NOT EXISTS(
+SELECT numLivre 
+FROM livre l2
+WHERE anneeImpression < 2003
+AND l1.numLivre = l2.numLivre);
+/*TP3 -- Exercie 1*/
+1°/ SELECT numLivre, titre
+FROM livre
+WHERE nombrePages >= (SELECT AVG(nombrePages)
+                      FROM livre);
+2°/ SELECT numLivre
+FROM ecrit
+WHERE numAut IN (SELECT numAut
+                   FROM auteur
+                   WHERE prenom LIKE 'Chester');
+3°/ SELECT numAut
+FROM auteur
+WHERE numAut NOT IN (SELECT numAut
+                     FROM ecrit 
+                     WHERE numLivre = 2);
+4°/ SELECT numE, nom
+FROM editeur
+WHERE numE NOT IN (SELECT DISTINCT(numE)
+                   FROM edite);
+5°/ SELECT numAut, nom
+FROM auteur
+WHERE nom LIKE 'C%'
+AND numAut NOT IN (SELECT DISTINCT(numAut)
+                   FROM ecrit);
+6°/ SELECT numLivre, titre
+FROM livre
+WHERE numLivre IN (SELECT numLivre
+                   FROM edite
+                   WHERE numE = 0)
+AND numLivre IN (SELECT numLivre
+                 FROM ecrit
+                 WHERE numAut <> 3);
+7°/ SELECT numAut
+FROM ecrit
+GROUP BY numAut
+HAVING COUNT(numLivre) = (SELECT COUNT(numLivre) AS cpt
+                            FROM ecrit
+                            GROUP BY numAut
+                            ORDER BY cpt DESC
+                            LIMIT 1);
+/*TP3 -- Exercie 2*/
+1°/ SELECT numAut
+FROM auteur
+WHERE numAut <> (SELECT numAut
+                 FROM livre, ecrit
+                 WHERE anneeImpression = 2003
+                 AND livre.numLivre = ecrit.numLivre);
+2°/ SELECT numLivre, titre
+FROM livre
+WHERE numLivre IN (SELECT numLivre
+                   FROM editeur, edite
+                   WHERE nom LIKE 'Gallimard'
+                   AND editeur.numE = edite.numE)
+  AND numLivre IN (SELECT numLivre
+                   FROM auteur, ecrit
+                   WHERE nom NOT LIKE 'Himes'
+                   AND prenom NOT LIKE 'Chester'
+                   AND auteur.numAut = ecrit.numAut);                        
+

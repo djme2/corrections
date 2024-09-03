@@ -1,0 +1,18 @@
+h1 {
+    font-family: fantasy;
+}
+img {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+    max-width: 100%;
+}
+body{
+    position: relative;
+}
+.photo {
+    padding-bottom: 10px;
+}
+#blk{
+    background-image: url('../images/bgi/arpTrombi2.jpg');
+}

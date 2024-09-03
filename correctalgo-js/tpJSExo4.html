@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/tpJSExo4.css">
+</head>
+<body onload="alert('Bonjour')" onkeydown="alert('touché')">
+    <img src="/images/gateau1.jpg" alt="oups" onmouseover="alert('mon image')"><br>
+    <input type="button" value="Cliquer moi" onclick="alert('bien cliquer')"><br>
+    <button onclick="alert('deuxième bouton')">Valider</button><br>
+
+    <input id="btnChanger" type="button" value="Changer Style" onclick="changer()"><br>
+    <input type="button" value="Annuler Style" onclick="annulerStyle()"><br>
+    
+    <img id="tof" src="/images/gateau2.jpg" alt="oups" 
+    onmouseover="remplacerImage()" onmouseout="revenirImage()">
+    <script src="js/tpJSExo4.js"></script>
+</body>
+</html>

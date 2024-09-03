@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>  
+    <h1>MON FORMULAIRE HTML</h1>
+    <form action="Destination.html">
+        
+        <fieldset>
+            <legend>Vos donnée personnel</legend>
+
+        <label>nom</label>
+          <input type="text" name="nom">
+
+         <br>
+        <label>prenom</label>
+          <input type="text" name="prenom">
+
+         <br>
+
+         <label>Date de naissance</label> 
+          <input type="date" name="dateDeNaissance">
+
+         <br>
+
+           <fieldset>
+            <legend>Lieu de naissance</legend>
+              <input type="radio"  name="lieu">
+               <label>Seine-saint-denis</label>
+
+              <input type="radio" name="lieu">
+               <label>reste du monde</label>
+           </fieldset>
+         <br>
+           <label>Adresse postale </label>
+           <textarea  rows="2" cols="30"></textarea> 
+
+           <br>
+
+           <label>Code postale</label>
+            <input type="number">
+           <br>
+
+           <label >Adresse electronique </label>
+            <input type="email" name="adresseElectronique">
+
+            <br>
+            <label>Page personnel</label>
+             <input type="url" id="url" placeholder="https://www.google.fr" name="pagePersonnel">
+
+            
+            <br>
+
+            <label>Telephone portable</label>
+             <input type="tel" name="telephonePortable">
+            
+            <br>
+
+            <label>semestre</label>
+             <select name="semestre">
+                <option value="S1">S1</option>
+                <option value="S2">S2</option>
+                <option value="S3">S3</option>
+                <option value="S4">S4</option>
+             </select>
+
+            <br>
+            
+            <label>Niveau en html</label>
+             <input type="range" min="0" max="10" step="1">
+
+             <br>
+
+             <fieldset>
+                <legend>Connaissance</legend>
+                 <input type="checkbox" name="html">HTML
+                 <input type="checkbox" name="css">CSS
+                 <input type="checkbox" name="formulaire">Formulaire
+                 <input type="checkbox" name="js">Javascript
+
+             </fieldset>
+
+             <br>
+             <input type="submit" name="soumettre">
+             
+            </fieldset>
+
+    </form>
+    
+
+
+</body>
+</html>

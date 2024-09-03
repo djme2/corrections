@@ -1,0 +1,36 @@
+Question 5   /// Déplacement d'une image
+/// JAVASCRIPT
+ let position  = 1;
+let nb_images = 4;
+function descend () {
+  let idluffy5   = 'img'+position;
+  position++;
+  if (position>nb_images) {
+    position = 1;
+  }
+  let idsuiv = 'img'+position;
+  document.getElementById(idluffy5).src = document.getElementById(idsuiv).src;
+  document.getElementById(idsuiv).src = 'Image/luffy5.jpg';
+}
+
+
+function monte () {
+  let idluffy5   = 'img'+position;
+  position--;
+  if (position<1) {
+    position = nb_images;
+  }
+  let idprec = 'img'+position;
+  document.getElementById(idluffy5).src = document.getElementById(idprec).src;
+  document.getElementById(idprec).src = 'Image/luffy5.jpg';} (modifié)
+[16:06]
+Partie HTML QUESTION 5 
+<body onkeyup="if (event.key=='ArrowDown') {descend();} else { if (event.key=='ArrowUp') {monte();} }">
+
+<img id="img1" src="Image/luffy5.jpg" witch="200"  height="150" alt="image1"><br>
+<img id="img2" src="Image/zoro.jpg" witch="200" height="150" alt="image2"><br>
+<img id="img3" src="Image/barbe noir.jpg" witch="300" height="200" alt="image3"><br>
+<img id="img4" src="Image/garp.jpg" witch="300" height="200" alt="image4">
+<br>
+<button onclick="monte();">en haut </button>
+<button onclick="descend();">en bas</button>

@@ -1,0 +1,34 @@
+/**
+ * Auto-generated code below aims at helping you parse
+ * the standard input according to the problem statement.
+ **/
+
+const N = parseInt(readline());
+let horses = [];
+// valeur maximale possible : 10000000
+let diff = 10000000;
+for (let i = 0; i < N; i++) {
+    const pi = parseInt(readline());
+    // façon 1
+    horses[i] = pi;
+    // façon 2
+    //horses.push(pi);
+}
+// permet de trier un tableau dans l'ordre
+horses.sort((a, b) => a - b);
+for (let i = 0; i < N - 1; i++){
+    // temp permet de récupérer une valeur temporaire
+    // Math.abs() permet de récupérer la valeur valeur absolue
+    // ex:  la valeur absolu de -8 est 8
+    let temp = Math.abs(horses[i] - horses[i+1]);
+    // si la valeur de temp est plus petite que diff alors diff 
+    // prend la valeur de temp
+    if(diff > temp){
+        diff = temp;
+    }
+}
+
+// Write an answer using console.log()
+// To debug: console.error('Debug messages...');
+
+console.log(diff);

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP5</title>
+</head>
+
+<body>
+    <?php
+    $anneeScolaire = [
+        "Rentrée" => [5, 9, 2016],
+        "Vacances Toussaint" => [
+            "début" => [22, 10, 2016],
+            "fin" => [30, 10, 2016]
+        ],
+        "Vacances Noël" => [
+            "début" => [17, 12, 2016],
+            "fin" => [2, 1, 2017]
+        ],
+        "Vacances d'hiver" => [
+            "début" => [11, 2, 2017],
+            "fin" => [19, 2, 2017]
+        ],
+        "Vacances de printemps" => [
+            "début" => [1, 4, 2017],
+            "fin" => [9, 4, 2017]
+        ],
+        "Fin des cours" => [8, 7, 2017]
+    ];
+    echo "<ul>";
+    
+    foreach ($anneeScolaire as $periode => $dates) {
+        if (count($dates) == 3) {
+            echo "<li> $periode : " . implode('/', $dates) . "</li>";
+        } else {
+            echo "<li> $periode : du " . implode('/', $dates['début']) . " au " . implode('/', $dates['fin']) . "</li>";
+        }
+    }
+    echo "</ul>";
+    ?>
+</body>
+
+</html>

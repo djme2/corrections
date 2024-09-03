@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Formulaire d'inscription</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+    
+    <form name="myForm" id="myForm" onsubmit="verifForm(this)" method="GET">
+        <table>
+            <tr>
+                <td><span class="form_col">Genre</span></td>
+                <td><label><input name="genre" type="radio" value="H" />Homme</label>
+                    <label><input name="genre" type="radio" value="F" />Femme</label></td>
+                    <td><span class="tooltip">Vous devez sélectionnez votre sexe</span></td>
+                </tr>
+                <tr>
+                    <td><label class="form_col" for="lastName">Nom</label></td>
+                    <td><input name="lastName" id="lastName" autofocus="autofocus" type="text" onblur="verifNomRegex(this)"/></td>
+                    <td><span class="tooltip">Un nom ne peut pas faire moins de 2 caractères</span></td>
+                </tr>
+                <tr>
+                    <td><label class="form_col" for="firstName">Prénom</label></td>
+                    <td><input name="firstName" id="firstName" type="text" onblur="verifNomRegex(this)"/></td>
+                    <td><span class="tooltip">Un prénom ne peut pas faire moins de 2 caractères</span></td>
+                </tr>
+                <tr>  
+                    <td><label class="form_col" for="age">Âge</label></td>
+                    <td><input name="age" id="age" type="text" onblur="verifAge(this)"/></td>
+                    <td><span class="tooltip">L'âge doit être compris entre 5 et 140</span></td>
+                </tr>
+                <tr>
+                    <td><label class="form_col" for="tel">Téléphone</label></td>
+                    <td><input name="tel" id="tel" type="text" onblur="verifTel(this)"/></td>
+                    <td><span class="tooltip">Le téléphone doit avoir entre 3 et 10 chiffres</span></td>
+            </tr>
+            <tr>
+                <td><label class="form_col" for="email">Email</label></td>
+                <td><input name="email" id="email" type="text" onblur="verifEmail(this)"/></td>
+                <td><span class="tooltip">email : visiteurs@domaine.fr</span></td>
+            </tr>
+            <tr>
+                <td><label class="form_col" for="login">Pseudo</label></td>
+                <td><input name="login" id="login" type="text" onblur="verifPseudo(this)"/></td>
+                <td><span class="tooltip">Le pseudo ne peut pas faire moins de 4 caractères</span></td>
+            </tr>
+            <tr>
+                <td><label class="form_col" for="pwd1">Mot de passe</label></td>
+                <td><input name="pwd1" id="pwd1" type="text" onblur="verifPwd1(this)"/></td>
+                <td><span class="tooltip">Le mot de passe ne doit pas faire moins de 6 caractères</span></td>
+            </tr>
+            <tr>
+                <td><label class="form_col" for="pwd2">Mot de passe (confirmation)</label></td>
+                <td><input name="pwd2" id="pwd2" type="password" onblur="verifPwd2(this)"/></td>
+                <td><span class="tooltip">Le mot de passe de confirmation doit être identique à celui d'origine</span></td>
+            </tr>
+            <tr>
+                <td><label class="form_col" for="country">Pays</label></td>
+                <td>
+                    <select name="country" id="country">
+                        <option value="none"> Sélectionnez un pays</option>
+                        <option value="tn">Tunisie</option>
+                        <option value="es">Espagne</option>
+                        <option value="fr">France</option>
+                        <option value="it">Italie</option>
+                    </select>
+                </td>
+                <td><span class="tooltip">Vous devez sélectionner votre pays de résidence</span></td>
+            </tr>
+            <tr>         
+                <td><input type="reset" value="Vider le formulaire" /></td>
+                <td><input type="submit" value="M'inscrire" /></td>
+            </tr>
+        </table>
+    </form>
+    
+    <script src="monjs.js"></script>
+</body>
+
+</html>

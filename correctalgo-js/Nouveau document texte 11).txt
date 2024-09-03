@@ -1,0 +1,26 @@
+// EXERCICE 1 - 3
+
+let t = [];
+let n = parseInt(prompt("Donner le nombre d'éléments du tableau"));
+for (let i = 0; i < n; i++) {
+//    t[i] = parseInt(prompt("Entrer la valeur de la case d'indice" +(i)));
+   t[i] = Math.floor(Math.random()*30);
+}
+for (let i = 0; i < t.length; i++) {
+    document.write(t[i] + "<br>");
+}
+let debut = parseInt(prompt("Saisir un entier"));
+let fin = parseInt(prompt("Saisir un entier"));
+if(fin >= t.length){
+    fin= t.length-1;
+}
+let min = t[debut];
+indice = debut;
+let j = debut;
+while(j <= fin){
+    if (t[j] <= min){
+        min = t[j];
+        indice = j
+    }
+    j++;
+    }alert("Le plus petit nombre est:" + min + " son indice est:" + indice);

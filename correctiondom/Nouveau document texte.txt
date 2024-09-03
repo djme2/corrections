@@ -1,0 +1,73 @@
+function effacerDOM(dv) {
+    if(dv != null){
+        while (dv.hasChildNodes()) {
+            let nf = dv.firstChild;
+            dv.removeChild(nf);
+        }
+        // dv.parentElement.removeChild(dv);
+    }
+}
+
+function remplacerTexte(elt,texte){
+    if(elt != null){
+    effacerDOM(elt);
+    var nvxNoeud = document.createTextNode(texte);
+    elt.appendChild(nvxNoeud);
+    }
+    }
+
+
+    function getTexte(elt){
+        let texte = "";
+        if(elt != null){
+        if(elt.hasChildNodes()){
+        for(var i = 0; i < elt.childNodes.length; i++){
+        var nf = elt.childNodes[i];
+        if(nf.nodeValue != null){
+        texte += nf.nodeValue;
+         }else{
+        texte += getTexte(nf);
+         }
+        }
+        }
+        }
+        return texte;
+    }
+
+
+
+
+
+function effacerTitre() {
+    let dv = document.getElementById("titre");
+    if(dv != null){
+        while (dv.hasChildNodes()) {
+            let nf = dv.firstChild;
+            dv.removeChild(nf);
+        }
+        dv.parentElement.removeChild(dv);
+    }
+}
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TEST DOM</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <h1 id="titre">Mon test DOM</h1>
+        <div id="dv">
+            <h1>premier fils</h1>
+            <h2>deuxieme fils</h2>
+            <h3>troisième fils</h3>
+        </div>
+        <input type="button" value="Effacer" onclick="effacerDOM(document.getElementById('dv'))">
+        <input type="button" value="Remplacer texte" onclick = "remplacerTexte(document.getElementsByTagName('h1')[1],'Bonjour à tous')">
+        <input type="button" value="Afficher texte" onclick="alert(getTexte(document.getElementById('dv')))">
+        <input type="button" value="Effacer Titre" onclick="effacerTitre()">
+
+        <script src="js/ex2.DOM.js"></script>
+    </body>
+</html>
